@@ -4,7 +4,7 @@ from exchangelib import Account, Credentials, DELEGATE, Message, Mailbox, \
 from exchangelib.items import SEND_ONLY_TO_ALL, SEND_ONLY_TO_CHANGED
 from exchangelib.properties import DistinguishedFolderId
 import argparse
-#
+
 
 def main():
 
@@ -12,20 +12,20 @@ def main():
   ap = argparse.ArgumentParser()
 
 # Add the arguments to the parser
-  ap.add_argument("-i", "--filename", required=True,
-   help="msg file name with extension")
-  ap.add_argument("-e", "--s_email", required=True,
-   help="outlook mail of sender ")
+  ap.add_argument("-i", "--inputFile", required=True,
+   help="file from which message to be read")
+  ap.add_argument("-se", "--s_email", required=True,
+   help="outlook email of sender ")
   ap.add_argument("-p", "--password", required=True,
    help="outlook password")
-  ap.add_argument("-r", "--r_email", required=True,
+  ap.add_argument("-re", "--r_email", required=True,
    help="recipient email")
   ap.add_argument("-m", "--message", required=True,
    help="your message for recipient")
   
   args = vars(ap.parse_args())
   # open message
-  msg = extract_msg.Message(args['filename'])
+  msg = extract_msg.Message(args['inputFile'])
   # print sender name
   print('Sender: {}'.format(msg.sender))
   # print date
